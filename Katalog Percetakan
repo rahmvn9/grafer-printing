@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percetakan — Katalog Produk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F5F1;
+  --surface:#FFFFFF;
+  --ink:#1C1B2C;
+  --ink-mid:#5C5B6C;
+  --ink-soft:#9896A8;
+  --accent:#E05527;
+  --accent-bg:#FDF0EB;
+  --teal:#1E8C78;
+  --teal-bg:#E6F5F2;
+  --blue-bg:#EEF3FD;
+  --blue:#2C68C4;
+  --border:#E8E6E0;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 1px 12px rgba(28,27,44,.07);
+  --shadow-hover:0 6px 32px rgba(28,27,44,.13);
+  --transition:0.25s cubic-bezier(.4,0,.2,1)
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:90;background:rgba(247,245,241,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.03em;color:var(--ink);display:flex;align-items:center;gap:6px;text-decoration:none}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;margin-left:2px}
+.nav-links{display:flex;gap:8px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--ink-mid);font-size:.875rem;font-weight:500;padding:6px 12px;border-radius:20px;transition:all var(--transition)}
+.nav-links a:hover{color:var(--ink);background:var(--border)}
+.btn-wa-nav{background:var(--accent);color:#fff !important;padding:8px 18px !important;border-radius:20px !important;display:inline-flex;align-items:center;gap:6px}
+.btn-wa-nav:hover{background:#c44820 !important;background:var(--accent) !important;opacity:.9}
+
+/* ── HERO ── */
+.hero{max-width:1120px;margin:0 auto;padding:72px 32px 56px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-bg);color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px}
+.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+.hero h1{font-family:'Sora',sans-serif;font-size:3rem;font-weight:700;line-height:1.1;letter-spacing:-.035em;margin-bottom:18px}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-lead{color:var(--ink-mid);font-size:1rem;line-height:1.75;margin-bottom:32px;max-width:440px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:13px 26px;border-radius:50px;font-size:.9rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:all var(--transition);font-family:inherit}
+.btn-primary:hover{background:#c44820;transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,85,39,.3)}
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border);padding:12px 24px;border-radius:50px;font-size:.9rem;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:all var(--transition);font-family:inherit}
+.btn-outline:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hcard{background:var(--surface);border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.hcard-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:10px}
+.hcard h4{font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;margin-bottom:4px}
+.hcard p{font-size:.72rem;color:var(--ink-soft);line-height:1.4}
+.hcard-accent{background:var(--ink);color:#fff;grid-column:span 2}
+.hcard-accent h4,.hcard-accent p{color:rgba(255,255,255,.9)}
+.hcard-accent p{color:rgba(255,255,255,.6)}
+
+/* ── SECTIONS ── */
+.section{max-width:1120px;margin:0 auto;padding:60px 32px}
+.sep{height:1px;background:var(--border);max-width:1120px;margin:0 auto 0}
+.sec-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--accent);border-radius:1px;display:block}
+.sec-title{font-family:'Sora',sans-serif;font-size:1.9rem;font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:6px}
+.sec-sub{color:var(--ink-mid);font-size:.9rem}
+.sec-header{margin-bottom:36px}
+
+/* ── GRID ── */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+
+/* ── PRODUCT CARD ── */
+.pcard{background:var(--surface);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);border:1.5px solid transparent;transition:all var(--transition);display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:bottom;transition:transform var(--transition);border-radius:3px 0 0 3px}
+.pcard:hover{border-color:rgba(224,85,39,.2);box-shadow:var(--shadow-hover);transform:translateY(-3px)}
+.pcard:hover::before{transform:scaleY(1)}
+.pcard-top{display:flex;justify-content:space-between;align-items:flex-start}
+.pcard-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.ic-orange{background:var(--accent-bg)}
+.ic-teal{background:var(--teal-bg)}
+.ic-blue{background:var(--blue-bg)}
+.pbadge{font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:12px;letter-spacing:.04em}
+.pb-hot{background:#FFF1CC;color:#8A5C00}
+.pb-new{background:#EEF3FD;color:#2C68C4}
+.pb-digi{background:var(--teal-bg);color:var(--teal)}
+.pname{font-family:'Sora',sans-serif;font-size:.92rem;font-weight:600;line-height:1.3;color:var(--ink)}
+.pdesc{font-size:.8rem;color:var(--ink-mid);line-height:1.55;flex:1}
+.pprice{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:var(--ink)}
+.pprice .punit{font-size:.72rem;font-weight:400;color:var(--ink-soft)}
+.order-btn{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--ink);color:#fff;border:none;padding:11px 18px;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:inherit;margin-top:auto}
+.order-btn svg{width:14px;height:14px;flex-shrink:0}
+.order-btn:hover{background:var(--accent)}
+
+/* ── INFO BOX ── */
+.info-box{background:var(--teal-bg);border-radius:var(--radius-sm);padding:14px 18px;font-size:.82rem;color:var(--teal);margin-top:16px;display:flex;gap:10px;align-items:flex-start;border:1px solid rgba(30,140,120,.15)}
+.info-box strong{color:var(--teal)}
+
+/* ── CTA ── */
+.cta-band{background:var(--ink);color:#fff;text-align:center;padding:80px 24px}
+.cta-band h2{font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+.cta-band p{color:rgba(255,255,255,.58);max-width:420px;margin:0 auto 32px;font-size:.95rem}
+.cta-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;border:none;padding:15px 32px;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all var(--transition);font-family:inherit}
+.cta-wa:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(37,211,102,.35)}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:24px;font-size:.78rem;color:var(--ink-soft);border-top:1px solid var(--border)}
+
+/* ── FLOAT BUTTONS ── */
+.float-wa{position:fixed;bottom:28px;right:28px;z-index:80}
+.float-wa a{display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#fff;padding:12px 20px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all var(--transition);font-family:'DM Sans',sans-serif}
+.float-wa a:hover{transform:scale(1.05)}
+.float-wa a svg{width:20px;height:20px}
+
+.admin-fab{position:fixed;bottom:28px;left:28px;z-index:80;background:var(--ink);color:#fff;width:40px;height:40px;border-radius:50%;border:none;font-size:.95rem;cursor:pointer;opacity:.3;transition:all var(--transition);box-shadow:var(--shadow)}
+.admin-fab:hover{opacity:1}
+
+/* ── OVERLAY ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:20px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;padding:32px}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.modal-title{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700}
+.close-x{background:var(--bg);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.95rem;transition:background var(--transition)}
+.close-x:hover{background:var(--border)}
+
+/* ── FORM ── */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:5px}
+.fi,.fs,.ft{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 13px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);transition:border-color var(--transition);outline:none}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--accent)}
+.ft{resize:vertical;min-height:78px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-add{background:var(--accent);color:#fff;border:none;padding:13px 22px;border-radius:var(--radius-sm);font-size:.88rem;font-weight:700;cursor:pointer;width:100%;transition:all var(--transition);font-family:inherit;margin-top:6px}
+.btn-add:hover{background:#c44820}
+.btn-cancel{background:var(--bg);color:var(--ink-mid);border:1.5px solid var(--border);padding:12px 22px;border-radius:var(--radius-sm);font-size:.88rem;font-weight:600;cursor:pointer;width:100%;transition:all var(--transition);font-family:inherit;margin-top:6px}
+.btn-cancel:hover{border-color:var(--ink-mid);color:var(--ink)}
+
+/* ── ADMIN LIST ── */
+.alist{margin-top:22px;padding-top:20px;border-top:1px solid var(--border)}
+.aitem{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);gap:12px}
+.aitem:last-child{border-bottom:none}
+.aitem-info{flex:1}
+.aitem-name{font-weight:600;font-size:.85rem}
+.aitem-price{font-size:.75rem;color:var(--ink-soft);margin-top:2px}
+.del-btn{background:#FFF0F0;color:#C53030;border:none;padding:6px 11px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;flex-shrink:0;transition:all var(--transition)}
+.del-btn:hover{background:#C53030;color:#fff}
+
+/* ── CONFIG BOX ── */
+.config-box{background:var(--bg);border-radius:var(--radius-sm);padding:14px;margin-bottom:18px}
+.config-row{display:flex;gap:8px;align-items:center}
+.config-row .fi{margin:0;flex:1}
+.config-save{background:var(--ink);color:#fff;border:none;padding:10px 16px;border-radius:var(--radius-sm);font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background var(--transition);white-space:nowrap}
+.config-save:hover{background:var(--accent)}
+.config-hint{font-size:.72rem;color:var(--ink-soft);margin-top:6px}
+
+/* ── TOAST ── */
+.toast{position:fixed;top:80px;right:24px;background:var(--ink);color:#fff;padding:13px 20px;border-radius:var(--radius-sm);font-size:.85rem;font-weight:500;z-index:999;transform:translateX(140%);transition:transform var(--transition);max-width:300px;box-shadow:var(--shadow-hover)}
+.toast.show{transform:translateX(0)}
+
+/* ── WA SVG ── */
+.wa-svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+
+/* ── LOGIN ── */
+.login-modal{background:var(--surface);border-radius:20px;width:100%;max-width:340px;padding:32px}
+.login-modal h3{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:20px;text-align:center}
+.login-err{font-size:.76rem;color:#C53030;text-align:center;margin-top:8px;min-height:18px}
+.login-icon{text-align:center;font-size:2rem;margin-bottom:10px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;padding:40px 20px;gap:0}
+  .hero-cards{display:none}
+  .hero h1{font-size:2.2rem}
+  .section{padding:40px 20px}
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .modal{padding:24px}
+  .frow{grid-template-columns:1fr}
+  .float-wa a span{display:none}
+  .float-wa a{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">InDig<span class="nav-logo-dot"></span>inovasi digital</a>
+  <ul class="nav-links">
+    <li><a href="#undangan">Undangan</a></li>
+    <li><a href="#spanduk">Spanduk</a></li>
+    <li><a href="#stiker">Stiker</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+    <li><a href="#" class="btn-wa-nav" id="nav-wa">
+      <svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pesan
+    </a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow"><span></span>Percetakan Digital</div>
+    <h1>Cetak <em>Apapun,</em><br>Kualitas Terbaik.</h1>
+    <p class="hero-lead">Undangan pernikahan, spanduk event, stiker produk — semuanya tersedia dengan harga terjangkau dan hasil berkualitas. Pesan sekarang, langsung via WhatsApp.</p>
+    <div class="hero-actions">
+      <a href="#undangan" class="btn-primary">Lihat Katalog</a>
+      <a href="#kontak" class="btn-outline">Hubungi Kami</a>
+    </div>
+  </div>
+  <div class="hero-cards">
+    <div class="hcard hcard-accent">
+      <div class="hcard-icon" style="background:rgba(255,255,255,.1)">🖨️</div>
+      <h4>Percetakan Lengkap</h4>
+      <p>Undangan, spanduk, stiker, dan berbagai produk cetak lainnya</p>
+    </div>
+    <div class="hcard">
+      <div class="hcard-icon ic-orange">📨</div>
+      <h4>Undangan</h4>
+      <p>Mulai Rp 800/lembar hingga paket online</p>
+    </div>
+    <div class="hcard">
+      <div class="hcard-icon ic-teal">🎯</div>
+      <h4>Spanduk & Stiker</h4>
+      <p>Berbagai bahan dan ukuran pilihan</p>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- UNDANGAN -->
+<section class="section" id="undangan">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Produk 01</div>
+    <h2 class="sec-title">Undangan</h2>
+    <p class="sec-sub">Berbagai pilihan untuk nikah, ulang tahun, khitanan, dan segala acara spesial.</p>
+  </div>
+  <div class="prod-grid" id="grid-undangan"></div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SPANDUK -->
+<section class="section" id="spanduk">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Produk 02</div>
+    <h2 class="sec-title">Cetak Spanduk</h2>
+    <p class="sec-sub">Spanduk berkualitas untuk promosi, event, dan berbagai keperluan lainnya.</p>
+  </div>
+  <div class="prod-grid" id="grid-spanduk"></div>
+  <div class="info-box" style="margin-top:20px">
+    <span>💡</span>
+    <div><strong>Butuh desain?</strong> Kami juga menerima jasa desain spanduk mulai dari <strong>Rp 30.000</strong>. Tanyakan langsung via WhatsApp!</div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- STIKER -->
+<section class="section" id="stiker">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Produk 03</div>
+    <h2 class="sec-title">Cetak Stiker</h2>
+    <p class="sec-sub">Stiker berbagai bahan — untuk label produk, promosi, kemasan, dan dekorasi.</p>
+  </div>
+  <div class="prod-grid" id="grid-stiker"></div>
+</section>
+
+<!-- PRODUK TAMBAHAN (admin) -->
+<div class="sep" id="extra-sep" style="display:none"></div>
+<section class="section" id="extra-section" style="display:none">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Produk Lainnya</div>
+    <h2 class="sec-title">Produk Tambahan</h2>
+    <p class="sec-sub">Produk dan layanan cetak lainnya yang tersedia.</p>
+  </div>
+  <div class="prod-grid" id="grid-extra"></div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="kontak">
+  <h2>Siap Memesan?</h2>
+  <p>Hubungi kami sekarang lewat WhatsApp untuk konsultasi gratis dan penawaran terbaik.</p>
+  <a href="#" class="cta-wa" id="cta-wa">
+    <svg class="wa-svg" style="width:22px;height:22px" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chat WhatsApp Sekarang
+  </a>
+</section>
+
+<footer>
+  <p>© 2025 InDig (Inovasi Digital) — Percetakan Digital. Semua hak dilindungi.</p>
+</footer>
+
+<!-- FLOAT WA -->
+<div class="float-wa">
+  <a href="#" id="float-wa">
+    <svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>Pesan via WA</span>
+  </a>
+</div>
+
+<!-- ADMIN FAB -->
+<button class="admin-fab" onclick="openLogin()" title="Admin Panel">⚙</button>
+
+<!-- LOGIN OVERLAY -->
+<div class="overlay" id="ov-login">
+  <div class="login-modal">
+    <div class="login-icon">🔐</div>
+    <h3>Login Admin</h3>
+    <div class="fg">
+      <label class="fl">Password</label>
+      <input type="password" class="fi" id="pw-input" placeholder="Masukkan password admin" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="btn-add" onclick="doLogin()">Masuk</button>
+    <button class="btn-cancel" onclick="closeOverlay('ov-login')">Batal</button>
+    <p class="login-err" id="login-err"></p>
+  </div>
+</div>
+
+<!-- ADMIN OVERLAY -->
+<div class="overlay" id="ov-admin">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title">⚙ Panel Admin</div>
+      <button class="close-x" onclick="closeOverlay('ov-admin')">✕</button>
+    </div>
+
+    <!-- WA Config -->
+    <div class="config-box">
+      <label class="fl" style="margin-bottom:6px">Nomor WhatsApp Bisnis</label>
+      <div class="config-row">
+        <input type="text" class="fi" id="wa-input" placeholder="Contoh: 6281234567890">
+        <button class="config-save" onclick="saveWA()">Simpan</button>
+      </div>
+      <p class="config-hint">Format: 62 + nomor tanpa angka 0 di depan. Contoh: 6281234567890</p>
+    </div>
+
+    <!-- Tambah Produk -->
+    <div class="fg">
+      <label class="fl">Nama Produk</label>
+      <input type="text" class="fi" id="p-name" placeholder="Contoh: Kartu Nama Premium">
+    </div>
+    <div class="frow">
+      <div class="fg">
+        <label class="fl">Harga</label>
+        <input type="text" class="fi" id="p-price" placeholder="Contoh: 15.000">
+      </div>
+      <div class="fg">
+        <label class="fl">Satuan</label>
+        <input type="text" class="fi" id="p-unit" placeholder="Contoh: /lembar">
+      </div>
+    </div>
+    <div class="fg">
+      <label class="fl">Deskripsi</label>
+      <textarea class="ft" id="p-desc" placeholder="Jelaskan produk secara singkat..."></textarea>
+    </div>
+    <div class="frow">
+      <div class="fg">
+        <label class="fl">Ikon (emoji)</label>
+        <input type="text" class="fi" id="p-icon" placeholder="Contoh: 🖨️">
+      </div>
+      <div class="fg">
+        <label class="fl">Label</label>
+        <select class="fs" id="p-badge">
+          <option value="">— Tanpa label —</option>
+          <option value="hot">⭐ Terlaris</option>
+          <option value="new">✨ Baru</option>
+          <option value="digi">🌐 Digital</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addProduct()">+ Tambah Produk</button>
+
+    <!-- List produk tambahan -->
+    <div class="alist" id="admin-list"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const WA_KEY = 'cetak_wa';
+const PROD_KEY = 'cetak_extras';
+const ADMIN_PW = 'rahmvn0902'; // ← Ganti password di sini
+
+const waSVG = `<svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
+const BASE = [
+  { grid:'undangan', items:[
+    { id:'u1', name:'Undangan Semi Formal', price:'Rp 800', unit:'/lembar', desc:'Cocok untuk berbagai acara formal dan semi-formal. Minimum cetak 50 lembar.', icon:'📜', badge:'hot', cat:'orange' },
+    { id:'u2', name:'Undangan Lipat 2', price:'Rp 1.200', unit:'/lembar', desc:'Tampilan elegan dengan dua lipatan. Kertas berkualitas pilihan, kesan mewah.', icon:'📄', badge:'', cat:'orange' },
+    { id:'u3', name:'Undangan Lipat 3', price:'Rp 1.800', unit:'/lembar', desc:'Desain trifold, ideal untuk undangan pernikahan dan acara resmi lainnya.', icon:'📋', badge:'', cat:'orange' },
+    { id:'u4', name:'Undangan Lipat 2 Hardcover', price:'Rp 2.500', unit:'/lembar', desc:'Cover keras eksklusif dengan lipatan dua. Kesan premium dan tahan lama.', icon:'📒', badge:'', cat:'orange' },
+    { id:'u5', name:'Undangan Hardcover Lipat 3', price:'Rp 3.500', unit:'/lembar', desc:'Premium trifold dengan hardcover. Pilihan terbaik untuk momen paling spesial.', icon:'📓', badge:'new', cat:'orange' },
+    { id:'u6', name:'Undangan Rustik', price:'Rp 2.000', unit:'/lembar', desc:'Nuansa natural dan vintage dengan bahan kertas kraft artistik yang hangat.', icon:'🌿', badge:'', cat:'orange' },
+    { id:'u7', name:'Undangan Online', price:'Rp 100.000 – 150.000', unit:'/paket', desc:'Undangan digital interaktif dengan fitur RSVP, countdown timer, dan galeri foto.', icon:'📱', badge:'digi', cat:'teal' },
+  ]},
+  { grid:'spanduk', items:[
+    { id:'s1', name:'Spanduk Bahan Biasa', price:'Rp 28.000', unit:'/m²', desc:'Flexi standar, ideal untuk penggunaan indoor dan outdoor jangka pendek.', icon:'🖼️', badge:'hot', cat:'teal' },
+    { id:'s2', name:'Spanduk Backlite Anti Air', price:'Rp 120.000', unit:'/m²', desc:'Bahan premium backlite tahan air. Warna lebih cerah dan tajam, cocok untuk outdoor permanen.', icon:'🎪', badge:'', cat:'teal' },
+  ]},
+  { grid:'stiker', items:[
+    { id:'st1', name:'Stiker Biasa', price:'Rp 20.000', unit:'/A3', desc:'Stiker kertas standar, cocok untuk label, promosi, dan tempel dinding dalam ruangan.', icon:'🏷️', badge:'hot', cat:'blue' },
+    { id:'st2', name:'Stiker Vinyl', price:'Rp 30.000', unit:'/A3+', desc:'Bahan vinyl tahan lama dan tahan air. Cocok untuk kendaraan dan penggunaan outdoor.', icon:'🔷', badge:'', cat:'blue' },
+    { id:'st3', name:'Stiker Transparan', price:'Rp 30.000', unit:'/A3+', desc:'Efek transparan elegan, cocok untuk logo produk, kemasan botol, dan dekorasi kaca.', icon:'💠', badge:'new', cat:'blue' },
+  ]},
+];
+
+function getWA(){ return localStorage.getItem(WA_KEY) || '6285265907198'; }
+
+function waLink(msg){ return `https://wa.me/${getWA()}?text=${encodeURIComponent(msg || 'Halo, saya ingin bertanya tentang produk percetakan 🙏')}`; }
+
+function badge(b){
+  if(!b) return '';
+  const map = { hot:`<span class="pbadge pb-hot">⭐ Terlaris</span>`, new:`<span class="pbadge pb-new">✨ Baru</span>`, digi:`<span class="pbadge pb-digi">🌐 Digital</span>` };
+  return map[b] || '';
+}
+
+function catColor(cat){
+  return { orange:'ic-orange', teal:'ic-teal', blue:'ic-blue' }[cat] || 'ic-blue';
+}
+
+function cardHTML(p){
+  const msg = `Halo, saya ingin memesan:\n*${p.name}*\nHarga: ${p.price}${p.unit}\n\nMohon info lebih lanjut 🙏`;
+  const wa = waLink(msg);
+  return `<div class="pcard">
+    <div class="pcard-top">
+      <div class="pcard-icon ${catColor(p.cat||'blue')}">${p.icon||'📦'}</div>
+      ${badge(p.badge)}
+    </div>
+    <div class="pname">${p.name}</div>
+    <div class="pdesc">${p.desc}</div>
+    <div class="pprice">${p.price}<span class="punit"> ${p.unit}</span></div>
+    <button class="order-btn" onclick="window.open('${wa}','_blank')">${waSVG} Pesan via WhatsApp</button>
+  </div>`;
+}
+
+function renderAll(){
+  BASE.forEach(sec => {
+    document.getElementById('grid-'+sec.grid).innerHTML = sec.items.map(cardHTML).join('');
+  });
+  renderExtra();
+  updateWALinks();
+}
+
+function renderExtra(){
+  const extras = JSON.parse(localStorage.getItem(PROD_KEY)||'[]');
+  const grid = document.getElementById('grid-extra');
+  const sec = document.getElementById('extra-section');
+  const sep = document.getElementById('extra-sep');
+  if(!extras.length){ sec.style.display='none'; sep.style.display='none'; return; }
+  sec.style.display=''; sep.style.display='';
+  grid.innerHTML = extras.map(p=>cardHTML({...p,cat:'blue'})).join('');
+}
+
+function updateWALinks(){
+  const link = waLink();
+  ['nav-wa','cta-wa','float-wa'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.href = link;
+  });
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3200);
+}
+
+function closeOverlay(id){ document.getElementById(id).classList.remove('open'); }
+
+function openLogin(){
+  document.getElementById('ov-login').classList.add('open');
+  document.getElementById('pw-input').value = '';
+  document.getElementById('login-err').textContent = '';
+  setTimeout(()=>document.getElementById('pw-input').focus(), 120);
+}
+
+function doLogin(){
+  const pw = document.getElementById('pw-input').value;
+  if(pw === ADMIN_PW){
+    closeOverlay('ov-login');
+    openAdmin();
+  } else {
+    document.getElementById('login-err').textContent = '❌ Password salah. Coba lagi.';
+  }
+}
+
+function openAdmin(){
+  document.getElementById('ov-admin').classList.add('open');
+  document.getElementById('wa-input').value = getWA();
+  renderAdminList();
+}
+
+function saveWA(){
+  const v = document.getElementById('wa-input').value.trim();
+  if(!v){ showToast('❌ Nomor tidak boleh kosong!'); return; }
+  localStorage.setItem(WA_KEY, v);
+  updateWALinks();
+  renderAll();
+  showToast('✅ Nomor WhatsApp tersimpan!');
+}
+
+function addProduct(){
+  const name = document.getElementById('p-name').value.trim();
+  const price = document.getElementById('p-price').value.trim();
+  const unit = document.getElementById('p-unit').value.trim();
+  const desc = document.getElementById('p-desc').value.trim();
+  const icon = document.getElementById('p-icon').value.trim() || '📦';
+  const badge = document.getElementById('p-badge').value;
+  if(!name||!price){ showToast('❌ Nama dan harga wajib diisi!'); return; }
+  const extras = JSON.parse(localStorage.getItem(PROD_KEY)||'[]');
+  extras.push({ id:'e'+Date.now(), name, price:'Rp '+price, unit, desc, icon, badge });
+  localStorage.setItem(PROD_KEY, JSON.stringify(extras));
+  ['p-name','p-price','p-unit','p-desc','p-icon'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('p-badge').value='';
+  renderExtra();
+  renderAdminList();
+  showToast('✅ Produk berhasil ditambahkan!');
+}
+
+function deleteProduct(id){
+  let extras = JSON.parse(localStorage.getItem(PROD_KEY)||'[]');
+  extras = extras.filter(p=>p.id!==id);
+  localStorage.setItem(PROD_KEY, JSON.stringify(extras));
+  renderExtra();
+  renderAdminList();
+  showToast('🗑 Produk dihapus.');
+}
+
+function renderAdminList(){
+  const extras = JSON.parse(localStorage.getItem(PROD_KEY)||'[]');
+  const el = document.getElementById('admin-list');
+  if(!extras.length){
+    el.innerHTML = '<p style="font-size:.8rem;color:var(--ink-soft);margin-top:4px">Belum ada produk tambahan.</p>';
+    return;
+  }
+  el.innerHTML = `<p style="font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:10px">Produk Tambahan (${extras.length})</p>`
+    + extras.map(p=>`<div class="aitem"><div class="aitem-info"><div class="aitem-name">${p.icon} ${p.name}</div><div class="aitem-price">${p.price}${p.unit}</div></div><button class="del-btn" onclick="deleteProduct('${p.id}')">Hapus</button></div>`).join('');
+}
+
+// Overlay close on backdrop
+document.querySelectorAll('.overlay').forEach(ov=>{
+  ov.addEventListener('click', e=>{ if(e.target===ov) ov.classList.remove('open'); });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const sel = a.getAttribute('href');
+    if(sel.length>1){
+      const t = document.querySelector(sel);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+    }
+  });
+});
+
+renderAll();
+</script>
+</body>
+</html>
