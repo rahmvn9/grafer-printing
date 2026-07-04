@@ -3,712 +3,300 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Percetakan — Katalog Produk</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>Form Pesan Undangan - Grafer Printing</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#F7F5F1;--surface:#FFFFFF;--ink:#1C1B2C;--ink-mid:#5C5B6C;--ink-soft:#9896A8;
-  --accent:#E05527;--accent-bg:#FDF0EB;--teal:#1E8C78;--teal-bg:#E6F5F2;
-  --blue-bg:#EEF3FD;--blue:#2C68C4;--border:#E8E6E0;
-  --radius:16px;--radius-sm:10px;
-  --shadow:0 1px 12px rgba(28,27,44,.07);--shadow-hover:0 6px 32px rgba(28,27,44,.13);
-  --transition:0.25s cubic-bezier(.4,0,.2,1)
-}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  :root{
+    --bg:#faf7f2;
+    --card:#ffffff;
+    --ink:#2b2320;
+    --muted:#8a7f76;
+    --accent:#a9714a;
+    --accent-dark:#8a5a38;
+    --border:#e8e0d8;
+    --wa:#25D366;
+    --wa-dark:#1ebe5b;
+    --section-bg:#faf5ef;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    padding:32px 16px;
+    display:flex;
+    justify-content:center;
+  }
+  .card{
+    background:var(--card);
+    max-width:520px;
+    width:100%;
+    padding:28px 24px 32px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    box-shadow:0 4px 24px rgba(0,0,0,0.05);
+  }
+  .brand{ text-align:center; margin-bottom:4px; }
+  .brand h1{ font-size:20px; margin:0; letter-spacing:0.5px; color:var(--accent-dark); }
+  .brand p{ margin:4px 0 20px; text-align:center; color:var(--muted); font-size:13px; }
 
-/* NAV */
-nav{position:sticky;top:0;z-index:90;background:rgba(247,245,241,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.03em;color:var(--ink);display:flex;align-items:center;gap:6px;text-decoration:none}
-.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;margin-left:2px}
-.nav-links{display:flex;gap:8px;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;color:var(--ink-mid);font-size:.875rem;font-weight:500;padding:6px 12px;border-radius:20px;transition:all var(--transition)}
-.nav-links a:hover{color:var(--ink);background:var(--border)}
-.btn-wa-nav{background:var(--accent);color:#fff !important;padding:8px 18px !important;border-radius:20px !important;display:inline-flex;align-items:center;gap:6px}
-.btn-wa-nav:hover{opacity:.88}
+  .section{
+    background:var(--section-bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 14px 6px;
+    margin-top:18px;
+  }
+  .section h2{
+    font-size:13px;
+    margin:0 0 4px;
+    color:var(--accent-dark);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
 
-/* HERO */
-.hero{max-width:1120px;margin:0 auto;padding:72px 32px 56px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-bg);color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px}
-.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
-.hero h1{font-family:'Sora',sans-serif;font-size:3rem;font-weight:700;line-height:1.1;letter-spacing:-.035em;margin-bottom:18px}
-.hero h1 em{color:var(--accent);font-style:normal}
-.hero-lead{color:var(--ink-mid);font-size:1rem;line-height:1.75;margin-bottom:32px;max-width:440px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:#fff;border:none;padding:13px 26px;border-radius:50px;font-size:.9rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:all var(--transition);font-family:inherit}
-.btn-primary:hover{background:#c44820;transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,85,39,.3)}
-.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border);padding:12px 24px;border-radius:50px;font-size:.9rem;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:all var(--transition);font-family:inherit}
-.btn-outline:hover{border-color:var(--ink);background:var(--ink);color:#fff}
-.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hcard{background:var(--surface);border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
-.hcard-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:10px}
-.hcard h4{font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;margin-bottom:4px}
-.hcard p{font-size:.72rem;color:var(--ink-soft);line-height:1.4}
-.hcard-accent{background:var(--ink);color:#fff;grid-column:span 2}
-.hcard-accent p{color:rgba(255,255,255,.6)}
+  label{ display:block; font-size:13px; font-weight:600; margin:14px 0 6px; color:var(--ink); }
+  label .opt{ font-weight:400; color:var(--muted); font-size:12px; }
 
-/* SECTIONS */
-.section{max-width:1120px;margin:0 auto;padding:60px 32px}
-.sep{height:1px;background:var(--border);max-width:1120px;margin:0 auto}
-.sec-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--accent);border-radius:1px;display:block}
-.sec-title{font-family:'Sora',sans-serif;font-size:1.9rem;font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:6px}
-.sec-sub{color:var(--ink-mid);font-size:.9rem}
-.sec-header{margin-bottom:36px}
+  input, select, textarea{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:14px;
+    font-family:inherit;
+    background:#fdfcfb;
+    color:var(--ink);
+  }
+  input:focus, select:focus, textarea:focus{ outline:none; border-color:var(--accent); }
+  textarea{ resize:vertical; min-height:60px; }
 
-/* GRID */
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 
-/* PRODUCT CARD — with image */
-.pcard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid transparent;transition:all var(--transition);display:flex;flex-direction:column;position:relative;overflow:hidden}
-.pcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:bottom;transition:transform var(--transition);border-radius:3px 0 0 3px;z-index:2}
-.pcard:hover{border-color:rgba(224,85,39,.2);box-shadow:var(--shadow-hover);transform:translateY(-3px)}
-.pcard:hover::before{transform:scaleY(1)}
+  .infobox{
+    margin-top:18px;
+    background:#fff8ec;
+    border:1px solid #edd9ad;
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:12.5px;
+    color:#6b5730;
+    line-height:1.5;
+  }
 
-/* Image area */
-.pcard-img-wrap{width:100%;height:160px;overflow:hidden;flex-shrink:0;position:relative;background:var(--bg)}
-.pcard-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s var(--transition)}
-.pcard:hover .pcard-img-wrap img{transform:scale(1.04)}
-.pcard-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative}
-.ph-orange{background:linear-gradient(135deg,#FDF0EB 0%,#FAD9CC 100%)}
-.ph-teal{background:linear-gradient(135deg,#E6F5F2 0%,#C0E8E1 100%)}
-.ph-blue{background:linear-gradient(135deg,#EEF3FD 0%,#D0DFF8 100%)}
-.ph-default{background:linear-gradient(135deg,#F0EEF8 0%,#DCDAF0 100%)}
+  button{
+    margin-top:26px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:var(--wa);
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:background .15s ease;
+  }
+  button:hover{ background:var(--wa-dark); }
+  button svg{ width:20px; height:20px; fill:#fff; }
 
-/* Camera overlay on placeholder */
-.pcard-placeholder::after{content:'📷';position:absolute;bottom:8px;right:10px;font-size:.8rem;opacity:.35}
-
-/* Card body */
-.pcard-body{padding:18px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
-.pcard-top{display:flex;justify-content:space-between;align-items:flex-start}
-.pcard-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
-.ic-orange{background:var(--accent-bg)}
-.ic-teal{background:var(--teal-bg)}
-.ic-blue{background:var(--blue-bg)}
-.pbadge{font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:12px;letter-spacing:.04em}
-.pb-hot{background:#FFF1CC;color:#8A5C00}
-.pb-new{background:#EEF3FD;color:#2C68C4}
-.pb-digi{background:var(--teal-bg);color:var(--teal)}
-.pname{font-family:'Sora',sans-serif;font-size:.9rem;font-weight:600;line-height:1.3;color:var(--ink)}
-.pdesc{font-size:.79rem;color:var(--ink-mid);line-height:1.55;flex:1}
-.pprice{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:var(--ink)}
-.pprice .punit{font-size:.72rem;font-weight:400;color:var(--ink-soft)}
-.order-btn{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--ink);color:#fff;border:none;padding:11px 18px;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:inherit;margin-top:auto}
-.order-btn svg{width:14px;height:14px;flex-shrink:0}
-.order-btn:hover{background:var(--accent)}
-
-/* INFO BOX */
-.info-box{background:var(--teal-bg);border-radius:var(--radius-sm);padding:14px 18px;font-size:.82rem;color:var(--teal);margin-top:16px;display:flex;gap:10px;align-items:flex-start;border:1px solid rgba(30,140,120,.15)}
-.info-box strong{color:var(--teal)}
-
-/* CTA */
-.cta-band{background:var(--ink);color:#fff;text-align:center;padding:80px 24px}
-.cta-band h2{font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
-.cta-band p{color:rgba(255,255,255,.58);max-width:420px;margin:0 auto 32px;font-size:.95rem}
-.cta-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;border:none;padding:15px 32px;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all var(--transition);font-family:inherit}
-.cta-wa:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(37,211,102,.35)}
-
-/* FOOTER */
-footer{text-align:center;padding:24px;font-size:.78rem;color:var(--ink-soft);border-top:1px solid var(--border)}
-
-/* FLOAT */
-.float-wa{position:fixed;bottom:28px;right:28px;z-index:80}
-.float-wa a{display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#fff;padding:12px 20px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all var(--transition);font-family:'DM Sans',sans-serif}
-.float-wa a:hover{transform:scale(1.05)}
-.float-wa a svg{width:20px;height:20px}
-.admin-fab{position:fixed;bottom:28px;left:28px;z-index:80;background:var(--ink);color:#fff;width:40px;height:40px;border-radius:50%;border:none;font-size:.95rem;cursor:pointer;opacity:.28;transition:all var(--transition);box-shadow:var(--shadow)}
-.admin-fab:hover{opacity:1}
-
-/* OVERLAY / MODAL */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.44);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
-.overlay.open{display:flex}
-.modal{background:var(--surface);border-radius:20px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column}
-.modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:24px 28px 0;flex-shrink:0}
-.modal-title{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700}
-.close-x{background:var(--bg);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.95rem;transition:background var(--transition)}
-.close-x:hover{background:var(--border)}
-
-/* ADMIN TABS */
-.admin-tabs{display:flex;gap:6px;padding:16px 28px 0;flex-shrink:0}
-.atab{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 14px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--ink-mid);transition:all var(--transition)}
-.atab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.atab:hover:not(.active){border-color:var(--ink-mid);color:var(--ink)}
-.tab-body{padding:20px 28px 28px;overflow-y:auto;flex:1}
-
-/* FORM */
-.fg{margin-bottom:13px}
-.fl{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:5px}
-.fi,.fs,.ft{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:.87rem;color:var(--ink);transition:border-color var(--transition);outline:none}
-.fi:focus,.fs:focus,.ft:focus{border-color:var(--accent)}
-.ft{resize:vertical;min-height:72px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-add{background:var(--accent);color:#fff;border:none;padding:13px 22px;border-radius:var(--radius-sm);font-size:.87rem;font-weight:700;cursor:pointer;width:100%;transition:all var(--transition);font-family:inherit;margin-top:6px}
-.btn-add:hover{background:#c44820}
-.btn-cancel{background:var(--bg);color:var(--ink-mid);border:1.5px solid var(--border);padding:12px 22px;border-radius:var(--radius-sm);font-size:.87rem;font-weight:600;cursor:pointer;width:100%;transition:all var(--transition);font-family:inherit;margin-top:6px}
-.btn-cancel:hover{border-color:var(--ink-mid);color:var(--ink)}
-
-/* CONFIG BOX */
-.config-box{background:var(--bg);border-radius:var(--radius-sm);padding:14px;margin-bottom:18px}
-.config-row{display:flex;gap:8px;align-items:center}
-.config-row .fi{margin:0;flex:1}
-.config-save{background:var(--ink);color:#fff;border:none;padding:10px 14px;border-radius:var(--radius-sm);font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background var(--transition);white-space:nowrap}
-.config-save:hover{background:var(--accent)}
-.config-hint{font-size:.72rem;color:var(--ink-soft);margin-top:6px}
-
-/* IMAGE UPLOAD in form */
-.img-upload-area{border:2px dashed var(--border);border-radius:var(--radius-sm);padding:18px;text-align:center;cursor:pointer;transition:all var(--transition);position:relative;overflow:hidden}
-.img-upload-area:hover{border-color:var(--accent);background:var(--accent-bg)}
-.img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.img-upload-area p{font-size:.8rem;color:var(--ink-soft);pointer-events:none}
-.img-upload-area .upload-icon{font-size:1.6rem;margin-bottom:6px;pointer-events:none}
-.img-preview-wrap{position:relative;border-radius:var(--radius-sm);overflow:hidden;height:120px}
-.img-preview-wrap img{width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-sm)}
-.img-preview-wrap .remove-img{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.55);color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background var(--transition)}
-.img-preview-wrap .remove-img:hover{background:rgba(200,30,30,.85)}
-
-/* ADMIN LIST (extra products) */
-.alist{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.aitem{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);gap:12px}
-.aitem:last-child{border-bottom:none}
-.aitem-info{flex:1;min-width:0}
-.aitem-name{font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.aitem-price{font-size:.75rem;color:var(--ink-soft);margin-top:2px}
-.del-btn{background:#FFF0F0;color:#C53030;border:none;padding:6px 11px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;flex-shrink:0;transition:all var(--transition)}
-.del-btn:hover{background:#C53030;color:#fff}
-
-/* PHOTO TAB */
-.photo-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
-.photo-item:last-child{border-bottom:none}
-.photo-thumb{width:64px;height:64px;border-radius:10px;overflow:hidden;flex-shrink:0;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;background-size:cover;background-position:center}
-.photo-info{flex:1;min-width:0}
-.photo-info .aitem-name{font-size:.82rem}
-.photo-actions{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex-shrink:0}
-.upload-label{display:inline-flex;align-items:center;gap:5px;background:var(--bg);border:1.5px solid var(--border);color:var(--ink-mid);padding:6px 10px;border-radius:6px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all var(--transition);position:relative;overflow:hidden;white-space:nowrap}
-.upload-label:hover{border-color:var(--accent);color:var(--accent)}
-.upload-label input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.photo-note{font-size:.72rem;color:var(--ink-soft);padding:14px 0 4px;display:flex;gap:6px;align-items:flex-start;line-height:1.5}
-
-/* TOAST */
-.toast{position:fixed;top:80px;right:24px;background:var(--ink);color:#fff;padding:13px 20px;border-radius:var(--radius-sm);font-size:.84rem;font-weight:500;z-index:999;transform:translateX(140%);transition:transform var(--transition);max-width:300px;box-shadow:var(--shadow-hover)}
-.toast.show{transform:translateX(0)}
-
-/* LOGIN */
-.login-modal{background:var(--surface);border-radius:20px;width:100%;max-width:340px;padding:32px}
-.login-modal h3{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:20px;text-align:center}
-.login-err{font-size:.76rem;color:#C53030;text-align:center;margin-top:8px;min-height:18px}
-.login-icon{text-align:center;font-size:2rem;margin-bottom:10px}
-
-/* WA SVG */
-.wa-svg{fill:#fff;flex-shrink:0}
-
-/* DIVIDER label */
-.form-divider{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin:18px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-
-/* RESPONSIVE */
-@media(max-width:800px){
-  .hero{grid-template-columns:1fr;padding:40px 20px;gap:0}
-  .hero-cards{display:none}
-  .hero h1{font-size:2.2rem}
-  .section{padding:40px 20px}
-  nav{padding:0 20px}
-  .nav-links{display:none}
-  .modal{max-width:100%;border-radius:16px}
-  .frow{grid-template-columns:1fr}
-  .float-wa a span{display:none}
-  .float-wa a{padding:12px}
-}
+  .note{ margin-top:14px; font-size:12px; color:var(--muted); text-align:center; }
+  .error{ border-color:#d9534f !important; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">InDig<span class="nav-logo-dot"></span>inovasi digital</a>
-  <ul class="nav-links">
-    <li><a href="#undangan">Undangan</a></li>
-    <li><a href="#spanduk">Spanduk</a></li>
-    <li><a href="#stiker">Stiker</a></li>
-    <li><a href="#kontak">Kontak</a></li>
-    <li><a href="#" class="btn-wa-nav" id="nav-wa">
-      <svg class="wa-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Pesan
-    </a></li>
-  </ul>
-</nav>
+<div class="card">
+  <div class="brand">
+    <h1>Grafer Printing</h1>
+    <p>Isi data di bawah, klik kirim, kami tanggapi lewat WhatsApp</p>
+  </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="hero-eyebrow"><span></span>Percetakan Digital</div>
-    <h1>Cetak <em>Apapun,</em><br>Kualitas Terbaik.</h1>
-    <p class="hero-lead">Undangan pernikahan, spanduk event, stiker produk — semuanya tersedia dengan harga terjangkau dan hasil berkualitas. Pesan sekarang, langsung via WhatsApp.</p>
-    <div class="hero-actions">
-      <a href="#undangan" class="btn-primary">Lihat Katalog</a>
-      <a href="#kontak" class="btn-outline">Hubungi Kami</a>
+  <form id="orderForm">
+    <label>Nama Pemesan</label>
+    <input type="text" id="nama" placeholder="Nama lengkap" required>
+
+    <div class="section">
+      <h2>Mempelai Wanita</h2>
+      <label>Nama Mempelai Wanita</label>
+      <input type="text" id="wanitaNama" placeholder="Nama lengkap mempelai wanita">
+      <label>Anak ke</label>
+      <input type="text" id="wanitaAnakKe" placeholder="contoh: 1 dari 2 bersaudara">
+      <label>Nama Ayah</label>
+      <input type="text" id="wanitaAyah" placeholder="Nama ayah mempelai wanita">
+      <label>Nama Ibu</label>
+      <input type="text" id="wanitaIbu" placeholder="Nama ibu mempelai wanita">
     </div>
-  </div>
-  <div class="hero-cards">
-    <div class="hcard" style="background:var(--ink);color:#fff;grid-column:span 2">
-      <div class="hcard-icon" style="background:rgba(255,255,255,.1)">🖨️</div>
-      <h4 style="color:#fff">Percetakan Lengkap</h4>
-      <p>Undangan, spanduk, stiker, dan berbagai produk cetak lainnya</p>
+
+    <div class="section">
+      <h2>Mempelai Pria</h2>
+      <label>Nama Mempelai Pria</label>
+      <input type="text" id="priaNama" placeholder="Nama lengkap mempelai pria">
+      <label>Anak ke</label>
+      <input type="text" id="priaAnakKe" placeholder="contoh: 2 dari 3 bersaudara">
+      <label>Nama Ayah</label>
+      <input type="text" id="priaAyah" placeholder="Nama ayah mempelai pria">
+      <label>Nama Ibu</label>
+      <input type="text" id="priaIbu" placeholder="Nama ibu mempelai pria">
     </div>
-    <div class="hcard"><div class="hcard-icon ic-orange">📨</div><h4>Undangan</h4><p>Mulai Rp 800/lembar hingga paket online</p></div>
-    <div class="hcard"><div class="hcard-icon ic-teal">🎯</div><h4>Spanduk & Stiker</h4><p>Berbagai bahan dan ukuran pilihan</p></div>
-  </div>
-</section>
 
-<div class="sep"></div>
+    <div class="section">
+      <h2>Acara Akad</h2>
+      <div class="row2">
+        <div>
+          <label>Tanggal Akad</label>
+          <input type="date" id="tanggalAkad">
+        </div>
+        <div>
+          <label>Jam Akad</label>
+          <input type="time" id="jamAkad">
+        </div>
+      </div>
+      <label>Lokasi Akad</label>
+      <input type="text" id="lokasiAkad" placeholder="Nama tempat & alamat">
+    </div>
 
-<!-- UNDANGAN -->
-<section class="section" id="undangan">
-  <div class="sec-header">
-    <div class="sec-eyebrow">Produk 01</div>
-    <h2 class="sec-title">Undangan</h2>
-    <p class="sec-sub">Berbagai pilihan untuk nikah, ulang tahun, khitanan, dan segala acara spesial.</p>
-  </div>
-  <div class="prod-grid" id="grid-undangan"></div>
-</section>
+    <div class="section">
+      <h2>Acara Resepsi</h2>
+      <div class="row2">
+        <div>
+          <label>Tanggal Resepsi</label>
+          <input type="date" id="tanggalResepsi">
+        </div>
+        <div>
+          <label>Jam Resepsi</label>
+          <input type="time" id="jamResepsi">
+        </div>
+      </div>
+      <label>Lokasi Resepsi</label>
+      <input type="text" id="lokasiResepsi" placeholder="Nama tempat & alamat">
+    </div>
 
-<div class="sep"></div>
+    <label>Jenis Undangan</label>
+    <select id="jenis">
+      <option value="Undangan Cetak (fisik)">Undangan Cetak (fisik)</option>
+      <option value="Undangan Online (digital/link)">Undangan Online (digital/link)</option>
+      <option value="Cetak + Online (paket)">Cetak + Online (paket)</option>
+    </select>
 
-<!-- SPANDUK -->
-<section class="section" id="spanduk">
-  <div class="sec-header">
-    <div class="sec-eyebrow">Produk 02</div>
-    <h2 class="sec-title">Cetak Spanduk</h2>
-    <p class="sec-sub">Spanduk berkualitas untuk promosi, event, dan berbagai keperluan lainnya.</p>
-  </div>
-  <div class="prod-grid" id="grid-spanduk"></div>
-  <div class="info-box" style="margin-top:20px">
-    <span>💡</span>
-    <div><strong>Butuh desain?</strong> Kami juga menerima jasa desain spanduk mulai dari <strong>Rp 30.000</strong>. Tanyakan langsung via WhatsApp!</div>
-  </div>
-</section>
+    <div class="row2">
+      <div>
+        <label>Jumlah Pesan</label>
+        <input type="number" id="jumlah" placeholder="contoh: 200" min="0">
+      </div>
+      <div>
+        <label>Warna Undangan</label>
+        <input type="text" id="warna" placeholder="contoh: emas & putih">
+      </div>
+    </div>
 
-<div class="sep"></div>
+    <label>Catatan Tambahan <span class="opt">(opsional)</span></label>
+    <textarea id="catatan" placeholder="Tema, referensi desain, budget, dll"></textarea>
 
-<!-- STIKER -->
-<section class="section" id="stiker">
-  <div class="sec-header">
-    <div class="sec-eyebrow">Produk 03</div>
-    <h2 class="sec-title">Cetak Stiker</h2>
-    <p class="sec-sub">Stiker berbagai bahan — untuk label produk, promosi, kemasan, dan dekorasi.</p>
-  </div>
-  <div class="prod-grid" id="grid-stiker"></div>
-</section>
+    <div class="infobox">
+      📸 <strong>Foto:</strong> Setelah chat terkirim, mohon lampirkan langsung di WhatsApp — maksimal <strong>7 foto umum</strong> (keluarga/prewedding) ditambah <strong>2 foto masing-masing mempelai</strong> (pria & wanita). Total maksimal 11 foto.
+    </div>
 
-<!-- EXTRA (admin added) -->
-<div class="sep" id="extra-sep" style="display:none"></div>
-<section class="section" id="extra-section" style="display:none">
-  <div class="sec-header">
-    <div class="sec-eyebrow">Produk Lainnya</div>
-    <h2 class="sec-title">Produk Tambahan</h2>
-    <p class="sec-sub">Produk dan layanan cetak lainnya yang tersedia.</p>
-  </div>
-  <div class="prod-grid" id="grid-extra"></div>
-</section>
+    <button type="submit">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2zm5.84 14.12c-.25.7-1.46 1.34-2.02 1.42-.52.08-1.17.11-1.89-.12-.44-.14-1-.32-1.72-.62-3.02-1.3-4.99-4.35-5.14-4.55-.15-.2-1.23-1.63-1.23-3.11 0-1.48.78-2.21 1.06-2.51.28-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.52.25.6.86 2.08.94 2.23.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.63 2.04 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.64-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.84 2.07.99.3.15.5.22.58.35.08.13.08.75-.17 1.45z"/></svg>
+      Kirim ke WhatsApp
+    </button>
 
-<!-- CTA -->
-<section class="cta-band" id="kontak">
-  <h2>Siap Memesan?</h2>
-  <p>Hubungi kami sekarang lewat WhatsApp untuk konsultasi gratis dan penawaran terbaik.</p>
-  <a href="#" class="cta-wa" id="cta-wa">
-    <svg class="wa-svg" width="22" height="22" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Chat WhatsApp Sekarang
-  </a>
-</section>
-
-<footer><p>© 2025 INDIG (Inovasi Digital) — Percetakan Digital. Semua hak dilindungi.</p></footer>
-
-<!-- FLOAT WA -->
-<div class="float-wa">
-  <a href="#" id="float-wa">
-    <svg class="wa-svg" width="20" height="20" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span>Pesan via WA</span>
-  </a>
+    <p class="note">Setelah klik, WhatsApp akan terbuka dengan pesan otomatis terisi.</p>
+  </form>
 </div>
-
-<button class="admin-fab" onclick="openLogin()" title="Admin Panel">⚙</button>
-
-<!-- LOGIN OVERLAY -->
-<div class="overlay" id="ov-login">
-  <div class="login-modal">
-    <div class="login-icon">🔐</div>
-    <h3>Login Admin</h3>
-    <div class="fg">
-      <label class="fl">Password</label>
-      <input type="password" class="fi" id="pw-input" placeholder="Masukkan password admin" onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-    <button class="btn-add" onclick="doLogin()">Masuk</button>
-    <button class="btn-cancel" onclick="closeOverlay('ov-login')">Batal</button>
-    <p class="login-err" id="login-err"></p>
-  </div>
-</div>
-
-<!-- ADMIN OVERLAY -->
-<div class="overlay" id="ov-admin">
-  <div class="modal">
-    <div class="modal-hdr">
-      <div class="modal-title">⚙ Panel Admin</div>
-      <button class="close-x" onclick="closeOverlay('ov-admin')">✕</button>
-    </div>
-    <div class="admin-tabs">
-      <button class="atab active" onclick="switchTab('produk',this)">Produk</button>
-      <button class="atab" onclick="switchTab('foto',this)">📷 Kelola Foto</button>
-    </div>
-
-    <!-- TAB PRODUK -->
-    <div class="tab-body" id="tab-produk">
-      <div class="config-box">
-        <label class="fl" style="margin-bottom:6px">Nomor WhatsApp Bisnis</label>
-        <div class="config-row">
-          <input type="text" class="fi" id="wa-input" placeholder="Contoh: 6281234567890">
-          <button class="config-save" onclick="saveWA()">Simpan</button>
-        </div>
-        <p class="config-hint">Format: 62 + nomor tanpa angka 0 di depan. Contoh: 6281234567890</p>
-      </div>
-
-      <div class="form-divider">Tambah Produk Baru</div>
-      <div class="fg">
-        <label class="fl">Nama Produk</label>
-        <input type="text" class="fi" id="p-name" placeholder="Contoh: Kartu Nama Premium">
-      </div>
-      <div class="frow">
-        <div class="fg"><label class="fl">Harga</label><input type="text" class="fi" id="p-price" placeholder="Contoh: 15.000"></div>
-        <div class="fg"><label class="fl">Satuan</label><input type="text" class="fi" id="p-unit" placeholder="Contoh: /lembar"></div>
-      </div>
-      <div class="fg">
-        <label class="fl">Deskripsi</label>
-        <textarea class="ft" id="p-desc" placeholder="Jelaskan produk secara singkat..."></textarea>
-      </div>
-      <div class="frow">
-        <div class="fg"><label class="fl">Ikon (emoji)</label><input type="text" class="fi" id="p-icon" placeholder="Contoh: 🖨️"></div>
-        <div class="fg">
-          <label class="fl">Label</label>
-          <select class="fs" id="p-badge">
-            <option value="">— Tanpa label —</option>
-            <option value="hot">⭐ Terlaris</option>
-            <option value="new">✨ Baru</option>
-            <option value="digi">🌐 Digital</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Image upload for new product -->
-      <div class="fg">
-        <label class="fl">Foto Produk (opsional)</label>
-        <div id="new-img-preview" style="display:none" class="img-preview-wrap" style="margin-bottom:8px">
-          <img id="new-img-preview-img" src="" alt="preview">
-          <button class="remove-img" onclick="clearNewImg()">✕</button>
-        </div>
-        <div class="img-upload-area" id="new-img-area">
-          <div class="upload-icon">🖼</div>
-          <p>Klik atau seret foto ke sini<br><span style="font-size:.72rem">JPG, PNG, WEBP · Maks 5 MB</span></p>
-          <input type="file" accept="image/*" id="new-img-input" onchange="previewNewImg(this)">
-        </div>
-      </div>
-
-      <button class="btn-add" onclick="addProduct()">+ Tambah Produk</button>
-      <div class="alist" id="admin-list"></div>
-    </div>
-
-    <!-- TAB FOTO -->
-    <div class="tab-body" id="tab-foto" style="display:none">
-      <p class="photo-note">💡 Upload foto untuk setiap produk. Foto tersimpan di browser ini. Ukuran akan dikompres otomatis.</p>
-      <div id="photo-list"></div>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-const WA_KEY='cetak_wa', PROD_KEY='cetak_extras', IMG_KEY='cetak_images';
-const ADMIN_PW='rahmvn0902'; // ← Ganti password di sini
+  // GANTI dengan nomor WA bisnis kamu (format: 62xxxxxxxxxx, tanpa 0 atau +)
+  const NOMOR_WA = "6281234567890";
 
-let pendingNewImg = null; // base64 for new product image
-
-const WA_SVG_HTML = `<svg class="wa-svg" width="14" height="14" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
-
-const BASE = [
-  { grid:'undangan', items:[
-    {id:'u1',name:'Undangan Semi Formal',price:'Rp 800',unit:'/lembar',desc:'Cocok untuk berbagai acara formal dan semi-formal. Minimum cetak 50 lembar.',icon:'📜',badge:'hot',cat:'orange'},
-    {id:'u2',name:'Undangan Lipat 2',price:'Rp 1.200',unit:'/lembar',desc:'Tampilan elegan dengan dua lipatan. Kertas berkualitas pilihan, kesan mewah.',icon:'📄',badge:'',cat:'orange'},
-    {id:'u3',name:'Undangan Lipat 3',price:'Rp 1.800',unit:'/lembar',desc:'Desain trifold, ideal untuk undangan pernikahan dan acara resmi lainnya.',icon:'📋',badge:'',cat:'orange'},
-    {id:'u4',name:'Undangan Lipat 2 Hardcover',price:'Rp 2.500',unit:'/lembar',desc:'Cover keras eksklusif dengan lipatan dua. Kesan premium dan tahan lama.',icon:'📒',badge:'',cat:'orange'},
-    {id:'u5',name:'Undangan Hardcover Lipat 3',price:'Rp 3.500',unit:'/lembar',desc:'Premium trifold dengan hardcover. Pilihan terbaik untuk momen paling spesial.',icon:'📓',badge:'new',cat:'orange'},
-    {id:'u6',name:'Undangan Rustik',price:'Rp 2.000',unit:'/lembar',desc:'Nuansa natural dan vintage dengan bahan kertas kraft artistik yang hangat.',icon:'🌿',badge:'',cat:'orange'},
-    {id:'u7',name:'Undangan Online',price:'Rp 100.000 – 150.000',unit:'/paket',desc:'Undangan digital interaktif dengan fitur RSVP, countdown timer, dan galeri foto.',icon:'📱',badge:'digi',cat:'teal'},
-  ]},
-  { grid:'spanduk', items:[
-    {id:'s1',name:'Spanduk Bahan Biasa',price:'Rp 28.000',unit:'/m²',desc:'Flexi standar, ideal untuk penggunaan indoor dan outdoor jangka pendek.',icon:'🖼️',badge:'hot',cat:'teal'},
-    {id:'s2',name:'Spanduk Backlite Anti Air',price:'Rp 120.000',unit:'/m²',desc:'Bahan premium backlite tahan air. Warna lebih cerah dan tajam, cocok untuk outdoor permanen.',icon:'🎪',badge:'',cat:'teal'},
-  ]},
-  { grid:'stiker', items:[
-    {id:'st1',name:'Stiker Biasa',price:'Rp 20.000',unit:'/A3',desc:'Stiker kertas standar, cocok untuk label, promosi, dan tempel dinding dalam ruangan.',icon:'🏷️',badge:'hot',cat:'blue'},
-    {id:'st2',name:'Stiker Vinyl',price:'Rp 30.000',unit:'/A3+',desc:'Bahan vinyl tahan lama dan tahan air. Cocok untuk kendaraan dan penggunaan outdoor.',icon:'🔷',badge:'',cat:'blue'},
-    {id:'st3',name:'Stiker Transparan',price:'Rp 30.000',unit:'/A3+',desc:'Efek transparan elegan, cocok untuk logo produk, kemasan botol, dan dekorasi kaca.',icon:'💠',badge:'new',cat:'blue'},
-  ]},
-];
-
-// ── Helpers ──────────────────────────────────────────────
-function getWA(){ return localStorage.getItem(WA_KEY)||'6285265907198'; }
-function getImgs(){ try{return JSON.parse(localStorage.getItem(IMG_KEY)||'{}')}catch{return{}} }
-function saveImgs(imgs){ localStorage.setItem(IMG_KEY, JSON.stringify(imgs)); }
-function getExtras(){ try{return JSON.parse(localStorage.getItem(PROD_KEY)||'[]')}catch{return[]} }
-function waLink(msg){ return `https://wa.me/${getWA()}?text=${encodeURIComponent(msg||'Halo, saya ingin bertanya tentang produk percetakan 🙏')}`; }
-
-function phClass(cat){
-  return {orange:'ph-orange',teal:'ph-teal',blue:'ph-blue'}[cat]||'ph-default';
-}
-function icClass(cat){
-  return {orange:'ic-orange',teal:'ic-teal',blue:'ic-blue'}[cat]||'ic-blue';
-}
-function badgeHTML(b){
-  if(!b) return '';
-  return {hot:'<span class="pbadge pb-hot">⭐ Terlaris</span>',new:'<span class="pbadge pb-new">✨ Baru</span>',digi:'<span class="pbadge pb-digi">🌐 Digital</span>'}[b]||'';
-}
-
-// ── Card rendering ────────────────────────────────────────
-function cardHTML(p){
-  const imgs = getImgs();
-  const src = imgs[p.id];
-  const imgArea = src
-    ? `<div class="pcard-img-wrap"><img src="${src}" alt="${p.name}" loading="lazy"></div>`
-    : `<div class="pcard-img-wrap"><div class="pcard-placeholder ${phClass(p.cat)}">${p.icon||'📦'}</div></div>`;
-
-  const msg = `Halo, saya ingin memesan:\n*${p.name}*\nHarga: ${p.price}${p.unit}\n\nMohon info lebih lanjut 🙏`;
-  const wa = waLink(msg);
-  return `<div class="pcard">
-${imgArea}
-<div class="pcard-body">
-  <div class="pcard-top">
-    <div class="pcard-icon ${icClass(p.cat)}">${p.icon||'📦'}</div>
-    ${badgeHTML(p.badge)}
-  </div>
-  <div class="pname">${p.name}</div>
-  <div class="pdesc">${p.desc}</div>
-  <div class="pprice">${p.price}<span class="punit"> ${p.unit}</span></div>
-  <button class="order-btn" onclick="window.open('${wa}','_blank')">${WA_SVG_HTML} Pesan via WhatsApp</button>
-</div></div>`;
-}
-
-// ── Render ────────────────────────────────────────────────
-function renderAll(){
-  BASE.forEach(sec=>{
-    document.getElementById('grid-'+sec.grid).innerHTML=sec.items.map(cardHTML).join('');
-  });
-  renderExtra();
-  updateWALinks();
-}
-
-function renderExtra(){
-  const ex=getExtras();
-  const grid=document.getElementById('grid-extra');
-  const sec=document.getElementById('extra-section');
-  const sep=document.getElementById('extra-sep');
-  if(!ex.length){sec.style.display='none';sep.style.display='none';return;}
-  sec.style.display='';sep.style.display='';
-  grid.innerHTML=ex.map(p=>cardHTML({...p,cat:p.cat||'blue'})).join('');
-}
-
-function updateWALinks(){
-  const link=waLink();
-  ['nav-wa','cta-wa','float-wa'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=link;});
-}
-
-// ── WA / Toast / Overlay ─────────────────────────────────
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3200);
-}
-function closeOverlay(id){ document.getElementById(id).classList.remove('open'); }
-
-// ── LOGIN ─────────────────────────────────────────────────
-function openLogin(){
-  document.getElementById('ov-login').classList.add('open');
-  document.getElementById('pw-input').value='';
-  document.getElementById('login-err').textContent='';
-  setTimeout(()=>document.getElementById('pw-input').focus(),120);
-}
-function doLogin(){
-  if(document.getElementById('pw-input').value===ADMIN_PW){
-    closeOverlay('ov-login'); openAdmin();
-  } else {
-    document.getElementById('login-err').textContent='❌ Password salah. Coba lagi.';
-  }
-}
-
-// ── ADMIN ─────────────────────────────────────────────────
-function openAdmin(){
-  document.getElementById('ov-admin').classList.add('open');
-  document.getElementById('wa-input').value=getWA();
-  renderAdminList();
-  renderPhotoList();
-}
-
-function switchTab(name, btn){
-  document.getElementById('tab-produk').style.display = name==='produk' ? '' : 'none';
-  document.getElementById('tab-foto').style.display   = name==='foto'   ? '' : 'none';
-  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  if(name==='foto') renderPhotoList();
-}
-
-function saveWA(){
-  const v=document.getElementById('wa-input').value.trim();
-  if(!v){showToast('❌ Nomor tidak boleh kosong!');return;}
-  localStorage.setItem(WA_KEY,v); updateWALinks(); renderAll();
-  showToast('✅ Nomor WhatsApp tersimpan!');
-}
-
-// ── IMAGE COMPRESSION ─────────────────────────────────────
-function compressImg(file, maxW, maxH, quality, cb){
-  if(!file){cb(null);return;}
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const img=new Image();
-    img.onload=()=>{
-      let w=img.width,h=img.height;
-      if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}
-      if(h>maxH){w=Math.round(w*maxH/h);h=maxH;}
-      const c=document.createElement('canvas');c.width=w;c.height=h;
-      c.getContext('2d').drawImage(img,0,0,w,h);
-      cb(c.toDataURL('image/jpeg',quality));
-    };
-    img.src=e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-// ── NEW PRODUCT IMAGE PREVIEW ─────────────────────────────
-function previewNewImg(input){
-  const file=input.files[0];
-  if(!file){return;}
-  if(file.size>5*1024*1024){showToast('❌ File terlalu besar (maks 5 MB)');input.value='';return;}
-  compressImg(file,800,600,.78,data=>{
-    pendingNewImg=data;
-    document.getElementById('new-img-preview-img').src=data;
-    document.getElementById('new-img-preview').style.display='';
-    document.getElementById('new-img-area').style.display='none';
-  });
-}
-function clearNewImg(){
-  pendingNewImg=null;
-  document.getElementById('new-img-input').value='';
-  document.getElementById('new-img-preview').style.display='none';
-  document.getElementById('new-img-area').style.display='';
-}
-
-// ── ADD / DELETE PRODUCT ──────────────────────────────────
-function addProduct(){
-  const name=document.getElementById('p-name').value.trim();
-  const price=document.getElementById('p-price').value.trim();
-  const unit=document.getElementById('p-unit').value.trim();
-  const desc=document.getElementById('p-desc').value.trim();
-  const icon=document.getElementById('p-icon').value.trim()||'📦';
-  const badge=document.getElementById('p-badge').value;
-  if(!name||!price){showToast('❌ Nama dan harga wajib diisi!');return;}
-
-  const id='e'+Date.now();
-  const ex=getExtras();
-  ex.push({id,name,price:'Rp '+price,unit,desc,icon,badge,cat:'blue'});
-  localStorage.setItem(PROD_KEY,JSON.stringify(ex));
-
-  if(pendingNewImg){
-    const imgs=getImgs(); imgs[id]=pendingNewImg; saveImgs(imgs);
+  function fmtTanggal(val){
+    if(!val) return "-";
+    const d = new Date(val + "T00:00:00");
+    return d.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
   }
 
-  ['p-name','p-price','p-unit','p-desc','p-icon'].forEach(i=>document.getElementById(i).value='');
-  document.getElementById('p-badge').value='';
-  clearNewImg();
-  renderExtra(); renderAdminList();
-  showToast('✅ Produk berhasil ditambahkan!');
-}
+  document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
 
-function deleteProduct(id){
-  let ex=getExtras().filter(p=>p.id!==id);
-  localStorage.setItem(PROD_KEY,JSON.stringify(ex));
-  const imgs=getImgs(); delete imgs[id]; saveImgs(imgs);
-  renderExtra(); renderAdminList(); renderPhotoList();
-  showToast('🗑 Produk dihapus.');
-}
+    const nama = document.getElementById('nama').value.trim();
+    if(!nama){
+      document.getElementById('nama').classList.add('error');
+      document.getElementById('nama').focus();
+      return;
+    }
 
-function renderAdminList(){
-  const ex=getExtras();
-  const el=document.getElementById('admin-list');
-  if(!ex.length){el.innerHTML='<p style="font-size:.8rem;color:var(--ink-soft);margin-top:6px">Belum ada produk tambahan.</p>';return;}
-  el.innerHTML=`<p style="font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:10px">Produk Tambahan (${ex.length})</p>`
-    +ex.map(p=>`<div class="aitem"><div class="aitem-info"><div class="aitem-name">${p.icon} ${p.name}</div><div class="aitem-price">${p.price}${p.unit}</div></div><button class="del-btn" onclick="deleteProduct('${p.id}')">Hapus</button></div>`).join('');
-}
+    const priaNama = document.getElementById('priaNama').value.trim();
+    const priaAnakKe = document.getElementById('priaAnakKe').value.trim();
+    const priaAyah = document.getElementById('priaAyah').value.trim();
+    const priaIbu = document.getElementById('priaIbu').value.trim();
 
-// ── PHOTO MANAGEMENT ─────────────────────────────────────
-function getAllProducts(){
-  const all=[];
-  BASE.forEach(sec=>sec.items.forEach(p=>all.push({...p})));
-  getExtras().forEach(p=>all.push({...p,cat:p.cat||'blue'}));
-  return all;
-}
+    const wanitaNama = document.getElementById('wanitaNama').value.trim();
+    const wanitaAnakKe = document.getElementById('wanitaAnakKe').value.trim();
+    const wanitaAyah = document.getElementById('wanitaAyah').value.trim();
+    const wanitaIbu = document.getElementById('wanitaIbu').value.trim();
 
-function renderPhotoList(){
-  const all=getAllProducts();
-  const imgs=getImgs();
-  const el=document.getElementById('photo-list');
-  el.innerHTML=all.map(p=>{
-    const src=imgs[p.id];
-    const thumb=src
-      ? `<div class="photo-thumb" style="background-image:url('${src}');background-size:cover;background-position:center"></div>`
-      : `<div class="photo-thumb ${phClass(p.cat)}">${p.icon}</div>`;
-    const removeBtn=src?`<button class="del-btn" onclick="removePhoto('${p.id}')">Hapus foto</button>`:'';
-    return `<div class="photo-item">
-      ${thumb}
-      <div class="photo-info">
-        <div class="aitem-name">${p.name}</div>
-        <div class="aitem-price">${p.price}${p.unit}</div>
-      </div>
-      <div class="photo-actions">
-        <label class="upload-label">📷 ${src?'Ganti':'Upload'}
-          <input type="file" accept="image/*" onchange="uploadPhoto('${p.id}',this)">
-        </label>
-        ${removeBtn}
-      </div>
-    </div>`;
-  }).join('');
-}
+    const tanggalAkad = document.getElementById('tanggalAkad').value;
+    const jamAkad = document.getElementById('jamAkad').value;
+    const lokasiAkad = document.getElementById('lokasiAkad').value.trim();
+    const tanggalResepsi = document.getElementById('tanggalResepsi').value;
+    const jamResepsi = document.getElementById('jamResepsi').value;
+    const lokasiResepsi = document.getElementById('lokasiResepsi').value.trim();
 
-function uploadPhoto(productId, input){
-  const file=input.files[0];
-  if(!file) return;
-  if(file.size>5*1024*1024){showToast('❌ File terlalu besar (maks 5 MB)');input.value='';return;}
-  compressImg(file,900,675,.78,data=>{
-    const imgs=getImgs(); imgs[productId]=data; saveImgs(imgs);
-    renderAll(); renderPhotoList();
-    showToast('✅ Foto berhasil diupload!');
+    const jenis = document.getElementById('jenis').value;
+    const jumlah = document.getElementById('jumlah').value.trim();
+    const warna = document.getElementById('warna').value.trim();
+    const catatan = document.getElementById('catatan').value.trim();
+
+    let pesan = `Halo Grafer Printing, saya mau tanya-tanya soal pemesanan undangan.\n\n`;
+    pesan += `Nama Pemesan: ${nama}\n\n`;
+
+    if(wanitaNama || wanitaAyah || wanitaIbu || wanitaAnakKe){
+      pesan += `*Mempelai Wanita*\n`;
+      pesan += `Nama: ${wanitaNama || '-'}\n`;
+      if(wanitaAnakKe) pesan += `Anak ke: ${wanitaAnakKe}\n`;
+      pesan += `Ayah: ${wanitaAyah || '-'}\n`;
+      pesan += `Ibu: ${wanitaIbu || '-'}\n\n`;
+    }
+
+    if(priaNama || priaAyah || priaIbu || priaAnakKe){
+      pesan += `*Mempelai Pria*\n`;
+      pesan += `Nama: ${priaNama || '-'}\n`;
+      if(priaAnakKe) pesan += `Anak ke: ${priaAnakKe}\n`;
+      pesan += `Ayah: ${priaAyah || '-'}\n`;
+      pesan += `Ibu: ${priaIbu || '-'}\n\n`;
+    }
+
+    pesan += `*Acara Akad*\n`;
+    pesan += `Tanggal: ${fmtTanggal(tanggalAkad)}\n`;
+    pesan += `Jam: ${jamAkad || '-'}\n`;
+    pesan += `Lokasi: ${lokasiAkad || '-'}\n\n`;
+
+    pesan += `*Acara Resepsi*\n`;
+    pesan += `Tanggal: ${fmtTanggal(tanggalResepsi)}\n`;
+    pesan += `Jam: ${jamResepsi || '-'}\n`;
+    pesan += `Lokasi: ${lokasiResepsi || '-'}\n\n`;
+
+    pesan += `Jenis Undangan: ${jenis}\n`;
+    if(jumlah) pesan += `Jumlah Pesan: ${jumlah}\n`;
+    if(warna) pesan += `Warna Undangan: ${warna}\n`;
+    if(catatan) pesan += `Catatan: ${catatan}\n`;
+
+    pesan += `\nMohon info lebih lanjut ya, terima kasih 🙏\n`;
+    pesan += `(Foto menyusul saya kirim di chat ini - maks 7 foto umum + 2 foto masing-masing mempelai)`;
+
+    const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
   });
-}
 
-function removePhoto(productId){
-  const imgs=getImgs(); delete imgs[productId]; saveImgs(imgs);
-  renderAll(); renderPhotoList();
-  showToast('🗑 Foto dihapus.');
-}
-
-// ── INIT ─────────────────────────────────────────────────
-document.querySelectorAll('.overlay').forEach(ov=>{
-  ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open');});
-});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const sel=a.getAttribute('href');
-    if(sel.length>1){const t=document.querySelector(sel);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}}
+  document.getElementById('nama').addEventListener('input', function(){
+    this.classList.remove('error');
   });
-});
-
-renderAll();
 </script>
+
 </body>
 </html>
