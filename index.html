@@ -116,6 +116,18 @@
     <p>Isi data di bawah, klik kirim, kami tanggapi lewat WhatsApp</p>
   </div>
 
+  <div class="infobox" style="margin-top:0; margin-bottom:4px;">
+    📋 <strong>Kisaran Harga per Lembar</strong><br>
+    1. Rp 800 — Tanpa foto, standar, lipat 2<br>
+    2. Rp 1.400 — Pakai foto, standar, lipat 2<br>
+    3. Rp 2.200 — Pakai foto, premium, lipat 2<br>
+    4. Rp 2.800 — Pakai foto, standar, lipat 3<br>
+    5. Rp 3.800 — Pakai foto, premium, lipat 3<br>
+    6. Rp 4.400 — Hardcover, premium, lipat 2<br>
+    7. Rp 5.200 — Hardcover, premium, lipat 3<br>
+    <em>Tersedia juga pilihan blanko lain yang bisa dicek langsung di toko.</em>
+  </div>
+
   <form id="orderForm">
     <label>Nama Pemesan</label>
     <input type="text" id="nama" placeholder="Nama lengkap" required>
@@ -176,11 +188,17 @@
       <input type="text" id="lokasiResepsi" placeholder="Nama tempat & alamat">
     </div>
 
-    <label>Jenis Undangan</label>
+    <label>Pilihan Paket Undangan</label>
     <select id="jenis">
-      <option value="Undangan Cetak (fisik)">Undangan Cetak (fisik)</option>
+      <option value="Paket 1 - Rp 800/lembar (Tanpa foto, standar, lipat 2)">1. Rp 800/lembar — Tanpa foto, standar, lipat 2</option>
+      <option value="Paket 2 - Rp 1.400/lembar (Pakai foto, standar, lipat 2)">2. Rp 1.400/lembar — Pakai foto, standar, lipat 2</option>
+      <option value="Paket 3 - Rp 2.200/lembar (Pakai foto, premium, lipat 2)">3. Rp 2.200/lembar — Pakai foto, premium, lipat 2</option>
+      <option value="Paket 4 - Rp 2.800/lembar (Pakai foto, standar, lipat 3)">4. Rp 2.800/lembar — Pakai foto, standar, lipat 3</option>
+      <option value="Paket 5 - Rp 3.800/lembar (Pakai foto, premium, lipat 3)">5. Rp 3.800/lembar — Pakai foto, premium, lipat 3</option>
+      <option value="Paket 6 - Rp 4.400/lembar (Hardcover, premium, lipat 2)">6. Rp 4.400/lembar — Hardcover, premium, lipat 2</option>
+      <option value="Paket 7 - Rp 5.200/lembar (Hardcover, premium, lipat 3)">7. Rp 5.200/lembar — Hardcover, premium, lipat 3</option>
       <option value="Undangan Online (digital/link)">Undangan Online (digital/link)</option>
-      <option value="Cetak + Online (paket)">Cetak + Online (paket)</option>
+      <option value="Belum tahu, mau tanya-tanya dulu / lihat blanko di toko">Belum tahu, mau tanya-tanya dulu / lihat blanko di toko</option>
     </select>
 
     <div class="row2">
@@ -281,7 +299,7 @@
     pesan += `Jam: ${jamResepsi || '-'}\n`;
     pesan += `Lokasi: ${lokasiResepsi || '-'}\n\n`;
 
-    pesan += `Jenis Undangan: ${jenis}\n`;
+    pesan += `Paket Undangan: ${jenis}\n`;
     if(jumlah) pesan += `Jumlah Pesan: ${jumlah}\n`;
     if(warna) pesan += `Warna Undangan: ${warna}\n`;
     if(catatan) pesan += `Catatan: ${catatan}\n`;
