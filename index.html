@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Form Pesan Undangan - Grafer Printing</title>
+<title>Form Pesan Undangan - Kreasi Printing Kuala Tungkal</title>
 <style>
   :root{
     --bg:#faf7f2;
@@ -38,6 +38,7 @@
   }
   .brand{ text-align:center; margin-bottom:4px; }
   .brand h1{ font-size:20px; margin:0; letter-spacing:0.5px; color:var(--accent-dark); }
+  .brand .alamat{ margin:6px 0 0; color:var(--ink); font-size:13px; line-height:1.45; }
   .brand p{ margin:4px 0 20px; text-align:center; color:var(--muted); font-size:13px; }
 
   .section{
@@ -84,6 +85,39 @@
     line-height:1.5;
   }
 
+  /* Daftar harga */
+  .harga{
+    margin-top:0;
+    background:var(--section-bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:6px 14px 10px;
+  }
+  .harga h2{
+    font-size:14px;
+    margin:12px 0 0;
+    color:var(--accent-dark);
+  }
+  .harga h3{
+    font-size:13px;
+    margin:14px 0 4px;
+    color:var(--ink);
+    border-bottom:1px solid var(--border);
+    padding-bottom:4px;
+  }
+  .harga ul{ list-style:none; margin:0; padding:0; }
+  .harga li{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-size:13px;
+    padding:4px 0;
+    line-height:1.4;
+  }
+  .harga li span:last-child{ font-weight:600; white-space:nowrap; text-align:right; }
+  .harga .ket{ font-size:11.5px; color:var(--muted); margin:2px 0 0; line-height:1.4; }
+  .harga .sub{ font-size:12px; font-weight:600; color:var(--accent-dark); margin:8px 0 0; }
+
   button{
     margin-top:26px;
     width:100%;
@@ -112,20 +146,77 @@
 
 <div class="card">
   <div class="brand">
-    <h1>Grafer Printing</h1>
+    <h1>Kreasi Printing Kuala Tungkal</h1>
+    <p class="alamat">📍 Jl. Panglima (sebelah Warkop TA / deretan Perpustakaan)</p>
     <p>Isi data di bawah, klik kirim, kami tanggapi lewat WhatsApp</p>
   </div>
 
-  <div class="infobox" style="margin-top:0; margin-bottom:4px;">
-    📋 <strong>Kisaran Harga per Lembar</strong><br>
-    1. Rp 800 — Tanpa foto, standar, lipat 2<br>
-    2. Rp 1.400 — Pakai foto, standar, lipat 2<br>
-    3. Rp 2.200 — Pakai foto, premium, lipat 2<br>
-    4. Rp 2.800 — Pakai foto, standar, lipat 3<br>
-    5. Rp 3.800 — Pakai foto, premium, lipat 3<br>
-    6. Rp 4.400 — Hardcover, premium, lipat 2<br>
-    7. Rp 5.200 — Hardcover, premium, lipat 3<br>
-    <em>Tersedia juga pilihan blanko lain yang bisa dicek langsung di toko.</em>
+  <div class="harga">
+    <h2>📋 Daftar Harga</h2>
+
+    <h3>Undangan Pernikahan (per lembar)</h3>
+    <ul>
+      <li><span>1. Tanpa foto, kertas jasmine</span><span>Rp 800</span></li>
+      <li><span>2. Pakai foto, kertas jasmine</span><span>Rp 1.200</span></li>
+      <li><span>3. Lipat 3, pakai foto</span><span>Rp 1.800</span></li>
+      <li><span>4. Hard cover, lipat 2</span><span>Rp 4.500</span></li>
+      <li><span>5. Hard cover, lipat 3</span><span>Rp 6.000</span></li>
+    </ul>
+
+    <h3>Print</h3>
+    <ul>
+      <li><span>Hitam putih</span><span>Rp 500/lembar</span></li>
+      <li><span>Warna standar</span><span>Rp 1.000/lembar</span></li>
+      <li><span>Full warna</span><span>Rp 2.000/lembar</span></li>
+    </ul>
+
+    <h3>Cetak Nota</h3>
+    <p class="sub">Hitam putih</p>
+    <ul>
+      <li><span>Isi 50 lembar</span><span>Rp 10.000</span></li>
+      <li><span>Isi 100 lembar</span><span>Rp 20.000</span></li>
+    </ul>
+    <p class="sub">Warna</p>
+    <ul>
+      <li><span>Isi 50 lembar</span><span>Rp 15.000</span></li>
+      <li><span>Isi 100 lembar</span><span>Rp 28.000</span></li>
+    </ul>
+    <ul>
+      <li><span><strong>Cetak nota 1 rim</strong></span><span>Rp 280.000</span></li>
+    </ul>
+
+    <h3>Cetak Foto</h3>
+    <ul>
+      <li><span>2x3 (5 lembar)</span><span>Rp 2.000</span></li>
+      <li><span>3x4 (5 lembar)</span><span>Rp 3.000</span></li>
+      <li><span>Ukuran 2R</span><span>Rp 3.000/lembar</span></li>
+      <li><span>Ukuran 4R</span><span>Rp 5.000/lembar</span></li>
+      <li><span>Ukuran A4</span><span>Rp 7.000/lembar</span></li>
+    </ul>
+
+    <h3>Spanduk</h3>
+    <ul>
+      <li><span>Spanduk</span><span>Rp 28.000/meter</span></li>
+    </ul>
+
+    <h3>Stiker (A3+)</h3>
+    <ul>
+      <li><span>1. Stiker kromo</span><span>Rp 20.000/lembar</span></li>
+    </ul>
+    <p class="ket">Tidak luntur, tetapi tidak tahan air.</p>
+    <ul>
+      <li><span>2. Stiker vinyl</span><span>Rp 30.000/lembar</span></li>
+    </ul>
+    <p class="ket">Tahan air dan tidak mudah sobek.</p>
+    <ul>
+      <li><span>3. Stiker transparan</span><span>Rp 30.000/lembar</span></li>
+    </ul>
+    <p class="ket">Tahan air.</p>
+
+    <h3>Yasin</h3>
+    <ul>
+      <li><span>Isi 128 halaman (standar)</span><span>Rp 5.500</span></li>
+    </ul>
   </div>
 
   <form id="orderForm">
@@ -190,13 +281,11 @@
 
     <label>Pilihan Paket Undangan</label>
     <select id="jenis">
-      <option value="Paket 1 - Rp 800/lembar (Tanpa foto, standar, lipat 2)">1. Rp 800/lembar — Tanpa foto, standar, lipat 2</option>
-      <option value="Paket 2 - Rp 1.400/lembar (Pakai foto, standar, lipat 2)">2. Rp 1.400/lembar — Pakai foto, standar, lipat 2</option>
-      <option value="Paket 3 - Rp 2.200/lembar (Pakai foto, premium, lipat 2)">3. Rp 2.200/lembar — Pakai foto, premium, lipat 2</option>
-      <option value="Paket 4 - Rp 2.800/lembar (Pakai foto, standar, lipat 3)">4. Rp 2.800/lembar — Pakai foto, standar, lipat 3</option>
-      <option value="Paket 5 - Rp 3.800/lembar (Pakai foto, premium, lipat 3)">5. Rp 3.800/lembar — Pakai foto, premium, lipat 3</option>
-      <option value="Paket 6 - Rp 4.400/lembar (Hardcover, premium, lipat 2)">6. Rp 4.400/lembar — Hardcover, premium, lipat 2</option>
-      <option value="Paket 7 - Rp 5.200/lembar (Hardcover, premium, lipat 3)">7. Rp 5.200/lembar — Hardcover, premium, lipat 3</option>
+      <option value="Paket 1 - Rp 800/lembar (Tanpa foto, kertas jasmine)">1. Rp 800/lembar — Tanpa foto, kertas jasmine</option>
+      <option value="Paket 2 - Rp 1.200/lembar (Pakai foto, kertas jasmine)">2. Rp 1.200/lembar — Pakai foto, kertas jasmine</option>
+      <option value="Paket 3 - Rp 1.800/lembar (Lipat 3, pakai foto)">3. Rp 1.800/lembar — Lipat 3, pakai foto</option>
+      <option value="Paket 4 - Rp 4.500/lembar (Hard cover, lipat 2)">4. Rp 4.500/lembar — Hard cover, lipat 2</option>
+      <option value="Paket 5 - Rp 6.000/lembar (Hard cover, lipat 3)">5. Rp 6.000/lembar — Hard cover, lipat 3</option>
       <option value="Undangan Online (digital/link)">Undangan Online (digital/link)</option>
       <option value="Belum tahu, mau tanya-tanya dulu / lihat blanko di toko">Belum tahu, mau tanya-tanya dulu / lihat blanko di toko</option>
     </select>
@@ -270,7 +359,7 @@
     const warna = document.getElementById('warna').value.trim();
     const catatan = document.getElementById('catatan').value.trim();
 
-    let pesan = `Halo Grafer Printing, saya mau tanya-tanya soal pemesanan undangan.\n\n`;
+    let pesan = `Halo Kreasi Printing Kuala Tungkal, saya mau tanya-tanya soal pemesanan undangan.\n\n`;
     pesan += `Nama Pemesan: ${nama}\n\n`;
 
     if(wanitaNama || wanitaAyah || wanitaIbu || wanitaAnakKe){
